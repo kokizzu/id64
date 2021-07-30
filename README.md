@@ -55,7 +55,7 @@ func main() {
 
 ## Example Generated ID
 
-These IDs generated with delay of 100ms (left column is the string representation, right column is the uint64 representation)
+These IDs generated with delay of 100ms (left column is the string representation, right column is the uint64 value)
 ```
 string     uint64
 3Kv3F----0 78228345350782977
