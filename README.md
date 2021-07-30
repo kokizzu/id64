@@ -1,9 +1,9 @@
 # id64
 
-quick ordered 64-bit ID generator, single thread only, not for distributed id generation
+quick ordered 64-bit ID generator, single thread only, not for distributed id generation, can generate hundreds of million id per second.
 
 Consist of 2 segments:
-- time segment (32 bit, offsetted to 2021-01-01)
+- time/second segment (32 bit, offsetted to 2021-01-01)
 - counter segment (32 bit, reset to 0 every second)
 
 
@@ -55,4 +55,4 @@ func main() {
 
 ## See also
 
-[lexid](//github.com/kokizzu/lexid)
+[lexid](//github.com/kokizzu/lexid) - if you need distributed id (have identity segment)
