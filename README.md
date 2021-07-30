@@ -34,19 +34,40 @@ import "github.com/kokizzu/id64"
 func main() {
    id := id64.ID()
    
-   // or object-oriented version (eg. when you need different generator per table)
+   // or object-oriented version (eg. when you need different generator per thread/table)
    gen := id64.Generator{}
    id = gen.ID()
    
    u64 := uint64(id) // get uint64 value
+   // 78224544304726017
    
    t := id.Time() // get time.Time of that id
+   // 2021-07-31 02:11:11 +0700 WIB
    
    i32 := id.Counter() // get counter of that id
+   // 1
    
    s := id.String() // string representation (base64-like encoding) 
+   // 3KuBw----0
 }
 
+```
+
+## Example Generated ID
+```
+string     uint64
+3Kv3F----0 78228345350782977
+3Kv3F----1 78228345350782978
+3Kv3F----2 78228345350782979
+3Kv3F----3 78228345350782980
+3Kv3J----0 78228349645750273
+3Kv3J----1 78228349645750274
+3Kv3J----2 78228349645750275
+3Kv3J----3 78228349645750276
+3Kv3J----4 78228349645750277
+3Kv3J----5 78228349645750278
+3Kv3J----6 78228349645750279
+3Kv3J----7 78228349645750280
 ```
 
 ## Gotchas
