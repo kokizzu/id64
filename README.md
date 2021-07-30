@@ -1,11 +1,12 @@
-# id64
+# ID64: Quick non-distributed ordered 64-bit ID generator
 
-quick ordered 64-bit ID generator, single thread only, not for distributed id generation
+Quick ordered 64-bit ID generator, single thread only, can generate hundreds of millions (~276M) IDs per second.
 
 Consist of 2 segments:
-- time segment (32 bit, offsetted to 2021-01-01)
+- time/second segment (32 bit, offsetted to 2021-01-01)
 - counter segment (32 bit, reset to 0 every second)
 
+**warning**: this is not for multi-node/distributed use case, since there's no identity segment, so it may duplicate if generated from >1 server. For distributed use case, use [lexid](//github.com/kokizzu/lexid) instead of this library.
 
 ## Benchmark
 
@@ -33,7 +34,7 @@ import "github.com/kokizzu/id64"
 func main() {
    id := id64.ID()
    
-   // or object-oriented version:
+   // or object-oriented version (eg. when you need different generator per table)
    gen := id64.Generator{}
    id = gen.ID()
    
@@ -50,9 +51,9 @@ func main() {
 
 ## Gotchas
 
-- can be duplicate if your processor can generate faster than 4 billion counter per second
+- can be duplicate if your processor can increment faster than 4.2 billion times per second
 - might overflow at 2156-07-28 02:08:00 UTC
 
 ## See also
 
-[lexid](//github.com/kokizzu/lexid)
+[lexid](//github.com/kokizzu/lexid) - if you need distributed ID (have identity segment)
