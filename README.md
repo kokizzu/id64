@@ -6,7 +6,7 @@ Consist of 2 segments:
 - time/second segment (32 bit, offsetted to 2021-01-01)
 - counter segment (32 bit, reset to 0 every second)
 
-**warning** this is not for multi-node, since there's no identity segment.
+**warning**: this is not for multi-node/distributed use case, since there's no identity segment, so it may duplicate if generated from >1 server. For distributed use case, use [lexid](//github.com/kokizzu/lexid) instead of this library.
 
 ## Benchmark
 
