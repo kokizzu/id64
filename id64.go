@@ -8,13 +8,11 @@ import (
 	"github.com/kpango/fastime"
 )
 
-var Now *fastime.Fastime
 var lastSec uint32
 var Gen *Generator
 var offset2021 uint32 // MinDateOffset = Offset2020.Unix() or MinNanoDateOffset = Offset2020.UnixNano()
 
 func init() {
-	Now = fastime.New()
 
 	offset2021 = uint32(time.Date(2021, time.January, 1, 0, 0, 0, 0, time.UTC).Unix())
 
@@ -30,7 +28,7 @@ type Generator struct {
 }
 
 func (gen *Generator) ID() id64 {
-	now := uint32(Now.UnixNow())
+	now := uint32(fastime.UnixNow())
 	counter := atomic.AddUint32(&gen.AtomicCounter, 1)
 	if now != lastSec {
 		atomic.SwapUint32(&lastSec, now)
