@@ -76,6 +76,7 @@ string     uint64
 
 - can be duplicate if your processor can increment faster than 4.2 billion times per second
 - might overflow at 2156-07-28 02:08:00 UTC
+- it might not ordered/sorted if you change your system time
 
 ## See also
 
