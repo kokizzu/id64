@@ -39,7 +39,8 @@ func main() {
    id = gen.ID()
    
    u64 := uint64(id) // get uint64 value
-   // 78224544304726017
+   // 78224544304726017 
+   // can also use: gen.UID() to get uint64 value directly
    
    t := id.Time() // get time.Time of that id
    // 2021-07-31 02:11:11 +0700 WIB
@@ -49,6 +50,10 @@ func main() {
    
    s := id.String() // string representation (base64-like encoding) 
    // 3KuBw----0
+   // can also use: gen.SID() to get string value directly
+   
+   i := id64.FromStr(s)
+   // 78224544304726017
 }
 
 ```

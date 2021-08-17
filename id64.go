@@ -27,6 +27,18 @@ func UID() uint64 {
 	return uint64(Gen.ID())
 }
 
+func SID() string {
+	return Gen.ID().String()
+}
+
+func FromStr(sid string) id64 {
+	dec, ok := S.DecodeCB63(sid)
+	if !ok {
+		return 0
+	}
+	return id64(dec)
+}
+
 type Generator struct {
 	AtomicCounter uint32
 }
