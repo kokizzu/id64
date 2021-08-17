@@ -23,6 +23,10 @@ func ID() id64 {
 	return Gen.ID()
 }
 
+func UID() uint64 {
+	return uint64(Gen.ID())
+}
+
 type Generator struct {
 	AtomicCounter uint32
 }
