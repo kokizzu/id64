@@ -23,7 +23,7 @@ BenchmarkLexIdNoSep-8   10396551       116.3 ns/op
 BenchmarkLexIdNoLex-8   10590300       115.1 ns/op
 BenchmarkLexId-8         9991906       114.9 ns/op
 BenchmarkXid-8          13754178        86.02 ns/op
-BenchmarkId64-8        276799974         4.362 ns/op
+BenchmarkId64-8        276799974         4.362 ns/op <--
 ```
 
 ## Usage
@@ -34,25 +34,49 @@ import "github.com/kokizzu/id64"
 func main() {
    id := id64.ID()
    
-   // or object-oriented version (eg. when you need different generator per table)
+   // or object-oriented version (eg. when you need different generator per thread/table)
    gen := id64.Generator{}
    id = gen.ID()
    
    u64 := uint64(id) // get uint64 value
+   // 78224544304726017
    
    t := id.Time() // get time.Time of that id
+   // 2021-07-31 02:11:11 +0700 WIB
    
    i32 := id.Counter() // get counter of that id
+   // 1
    
    s := id.String() // string representation (base64-like encoding) 
+   // 3KuBw----0
 }
 
+```
+
+## Example Generated ID
+
+These IDs generated with delay of 100ms (left column is the string representation, right column is the uint64 value)
+```
+string     uint64
+3Kv3F----0 78228345350782977
+3Kv3F----1 78228345350782978
+3Kv3F----2 78228345350782979
+3Kv3F----3 78228345350782980
+3Kv3J----0 78228349645750273
+3Kv3J----1 78228349645750274
+3Kv3J----2 78228349645750275
+3Kv3J----3 78228349645750276
+3Kv3J----4 78228349645750277
+3Kv3J----5 78228349645750278
+3Kv3J----6 78228349645750279
+3Kv3J----7 78228349645750280
 ```
 
 ## Gotchas
 
 - can be duplicate if your processor can increment faster than 4.2 billion times per second
 - might overflow at 2156-07-28 02:08:00 UTC
+- it might not ordered/sorted/duplicate if you change your system time to earlier time
 
 ## See also
 
