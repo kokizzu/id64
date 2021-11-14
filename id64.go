@@ -48,7 +48,7 @@ func (gen *Generator) ID() id64 {
 	counter := atomic.AddUint32(&gen.AtomicCounter, 1)
 	if now != lastSec {
 		atomic.SwapUint32(&lastSec, now)
-		atomic.SwapUint32(&gen.AtomicCounter, 0) // ignore old value
+		atomic.CompareAndSwapUint32(&gen.AtomicCounter, counter, 0)
 		counter = atomic.AddUint32(&gen.AtomicCounter, 1)
 	}
 	return id64((uint64(lastSec-offset2021) << 32) + uint64(counter))
