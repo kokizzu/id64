@@ -10,7 +10,7 @@ Consist of 2 segments:
 
 ## Benchmark
 
-```
+```shell
 cpu: AMD Ryzen 3 3100 4-Core Processor    
 BenchmarkShortuuid-8      118908      8572 ns/op
 BenchmarkKsuid-8          760924      1493 ns/op
@@ -28,7 +28,7 @@ BenchmarkId64-8        276799974         4.362 ns/op <--
 
 ## Usage
 
-```
+```go
 import "github.com/kokizzu/id64"
 
 func main() {
@@ -61,7 +61,7 @@ func main() {
 ## Example Generated ID
 
 These IDs generated with delay of 100ms (left column is the string representation, right column is the uint64 value)
-```
+```shell
 string     uint64
 3Kv3F----0 78228345350782977
 3Kv3F----1 78228345350782978
