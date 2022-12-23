@@ -16,6 +16,9 @@ echo "codes formatted.."
 go get -u -v github.com/kokizzu/gotro@latest
 go mod tidy
 
+# run test
+go test ./...
+
 # add and commit all files
 git add .
 git status

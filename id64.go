@@ -32,7 +32,7 @@ func SID() string {
 }
 
 func FromStr(sid string) id64 {
-	dec, ok := S.DecodeCB63(sid)
+	dec, ok := S.DecodeCB63[int64](sid)
 	if !ok {
 		return 0
 	}
