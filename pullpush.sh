@@ -16,6 +16,9 @@ echo "codes formatted.."
 go get -u -v github.com/kokizzu/gotro@latest
 go mod tidy
 
+# run linter
+golangci-lint run
+
 # run test
 go test ./...
 
