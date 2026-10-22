@@ -1,6 +1,6 @@
 module github.com/kokizzu/id64
 
-go 1.25.0
+go 1.26.10
 
 require (
 	github.com/kokizzu/gotro v1.2826.425
